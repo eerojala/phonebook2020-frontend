@@ -70,6 +70,12 @@ const App = () => {
           setNewNumber('')
           setNotificationTimeout(5000)
         })
+        .catch(error => {
+          console.log(error.response.data)
+          setNotification(error.response.data.error)
+          setNotificationStyle(errorStyle)
+          setNotificationTimeout(8000)
+        })
     } else {
       if (window.confirm(`There already exists an entry with that name. Do you want to update it's number?`)) {
         updateEntry(existingEntry)
